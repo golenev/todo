@@ -1,6 +1,6 @@
 package data
 
-class TasksRepositoryMemory : TasksRepository() {
+open class TasksRepositoryMemory : TasksRepository() {
 
     val tasks = mutableListOf<Task>()
 
@@ -9,6 +9,10 @@ class TasksRepositoryMemory : TasksRepository() {
         var filteredTasks = tasks.toList()
         if (!completed) filteredTasks = filteredTasks.filter { !it.completed }
         return filteredTasks
+    }
+
+    override fun getTaskById(id: Int): Task? {
+        return tasks.find { it.id == id }
     }
 
     override fun addTask(task: Task): Int {
