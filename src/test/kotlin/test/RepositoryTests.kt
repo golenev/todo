@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test
 class RepositoryTests : TasksRepositoryMemory() {
 
     var repository = TasksRepositoryMemory();
-
     val firstTask = Task(name = "First Task", priority = Priority.LOW, completed = false)
     val secondTask = Task(name = "Second Task", priority = Priority.HIGH, completed = false)
     val thirdTask = Task(name = "Third Task", priority = Priority.HIGH, completed = false)
