@@ -8,13 +8,14 @@ import org.junit.jupiter.api.Test
 
 class RepositoryTests : TasksRepositoryMemory() {
 
-    var repository = TasksRepositoryMemory();
+    var repository = TasksRepositoryMemory()
     val firstTask = Task(name = "First Task", priority = Priority.LOW, completed = false)
     val secondTask = Task(name = "Second Task", priority = Priority.HIGH, completed = false)
     val thirdTask = Task(name = "Third Task", priority = Priority.HIGH, completed = false)
     val firstTaskGo = repository.addTask(firstTask)
     val secondTaskGo = repository.addTask(secondTask)
     val thirdTaskGo = repository.addTask(thirdTask)
+
 
     @Test
     fun testSetStatus() {
@@ -36,9 +37,13 @@ class RepositoryTests : TasksRepositoryMemory() {
 
     @Test
     fun testAddingNewTask() {
-        val newTask = Task(name = "Huge Task", priority = Priority.MEDIUM, completed = false);
-        repository.addTask(newTask)
-        assertEquals(newTask.name, "Huge Task", "Имя добалвенной таски совпадает")
+        val newTask = Task(name = "Huge Task", priority = Priority.MEDIUM, completed = false)
+        //repository.addTask(newTask)
+        val huge = repository.addTask(newTask)
+        val all = repository.getTasks()
+        val hugeTask = repository.getTaskById(huge)
+       // assertEquals(newTask.name, "Huge Task", "Имя добалвенной таски совпадает")
+        assertEquals(newTask.name, hugeTask?.name ?: "None", "Имя добалвенной таски совпадает")
     }
 
 }
